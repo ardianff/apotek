@@ -29,8 +29,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN git config --global user.name "ardianff" \
     && git config --global user.email "ardianfirmansyah123@gmail.com" \
     && git config --global --add safe.directory /var/www/html
-RUN composer install
 RUN composer update
+RUN composer install
 
 RUN php artisan key:generate
 
