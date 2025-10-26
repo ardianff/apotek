@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  apotek-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: apotek-ulinversal
+    restart: always
+    working_dir: /var/www/html
+    volumes:
+      - /var/projects/web/apotek:/var/www/html
+      - /var/projects/web/apotek/storage:/var/www/html/storage
+      - backup_data:/var/www/html/backup
+    ports:
+      - "4100:80"
+    networks:
+      - db_net
+
+networks:
+  db_net:
+    external: true
+
+volumes:
+  backup_data:
